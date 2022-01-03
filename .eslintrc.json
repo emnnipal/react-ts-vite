@@ -1,63 +1,61 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "node": true,
-        "jest/globals": true
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb",
-        "airbnb-typescript",
-        "airbnb/hooks",
-        "plugin:jest/recommended",
-        "plugin:jest/style"
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "project": ["./tsconfig.eslint.json"]
+  },
+  "plugins": ["react", "@typescript-eslint", "jest"],
+  "rules": {
+    "class-methods-use-this": "off",
+    "linebreak-style": "off",
+    "no-undef": "error",
+    "prefer-default-export": "off",
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2021,
-        "sourceType": "module",
-        "project": [
-            "./tsconfig.eslint.json"
-        ]
-    },
-    "plugins": [
-        "react",
-        "@typescript-eslint",
-        "jest"
-    ],
-    "rules": {
-        "class-methods-use-this": "off",
-        "linebreak-style": "off",
-        "no-undef": "error",
-        "prefer-default-export": "off",
-        "import/prefer-default-export": "off",
-        "react/function-component-definition": ["error", {
-            "namedComponents": "arrow-function",
-            "unnamedComponents": "arrow-function"
-        }],
-        "import/order": [
-            "error",
-            {
-                "groups": [
-                    "index",
-                    "internal",
-                    "sibling",
-                    "parent",
-                    "external",
-                    "builtin",
-                    "object",
-                    "type"
-                ],
-                "newlines-between": "always",
-                "alphabetize": {
-                    "order": "asc",
-                    "caseInsensitive": true
-                }
-            }
-        ]
-    }
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "index",
+          "internal",
+          "sibling",
+          "parent",
+          "external",
+          "builtin",
+          "object",
+          "type"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  }
 }
