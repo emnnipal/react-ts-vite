@@ -1,0 +1,9 @@
+node_modules/
+dist/
+build/
+api-build/
+coverage/
+.env
+.eslintcache
+.vscode
+*-error.log
