@@ -2,7 +2,7 @@
   "name": "boilerplate-ts-reactjs",
   "version": "0.0.0",
   "private": true,
-  "author": "Emmanuel G. Nipal Jr.",
+  "author": "Emmanuel Nipal <emnnipal@gmail.com>",
   "license": "ISC",
   "scripts": {
     "start": "react-scripts start",
@@ -12,6 +12,9 @@
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "eslint --fix --ext .ts,.tsx ./src",
     "format": "npx prettier --write .",
+    "server:start": "cross-env NODE_ENV=production node server/server.js",
+    "pm2:start": "pm2 start npm --name 'sample-app-name' -- run server:start",
+    "deploy": "npm run build && npm run pm2:start",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -31,6 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
     "compress-create-react-app": "^1.2.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.4.1",
     "eslint-config-airbnb": "^19.0.2",
     "eslint-config-airbnb-typescript": "^16.1.0",

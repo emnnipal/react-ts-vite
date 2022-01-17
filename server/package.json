@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Serve ScoreUp React App",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "author": "Emmanuel Nipal <emnnipal@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^14.1.0"
+  },
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
