@@ -31,4 +31,5 @@ You must have the following:
 ## Tech Stack
 
 - React JS made with CRA
+- Jest for testing
 - TypeScript
