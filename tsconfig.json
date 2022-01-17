@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -28,20 +24,19 @@
     "noImplicitThis": true,
     "noImplicitReturns": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
+    "experimentalDecorators": true
   },
   "exclude": [
     "node_modules",
-    "build", 
-    "commitlint.config.js", 
+    "build",
+    "commitlint.config.js",
     "jest.config.ts",
     "babel.config.js",
     "coverage",
     "src/**/*.test.ts",
     "__snapshots__",
-    "jest.setup.ts"
+    "jest.setup.ts",
+    "server"
   ],
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
