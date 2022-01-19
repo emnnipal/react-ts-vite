@@ -12,6 +12,7 @@
     "dotenv": "^14.1.0"
   },
   "dependencies": {
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "helmet": "^5.0.1"
   }
 }

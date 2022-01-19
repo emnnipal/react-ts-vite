@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv');
+const helmet = require('helmet');
 
 dotenv.config({ path: path.join(__dirname, '../.env') });
 
@@ -8,6 +9,7 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+app.use(helmet());
 app.use(express.json());
 app.use(
   '/',
