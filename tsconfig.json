@@ -24,10 +24,11 @@
     "noImplicitThis": true,
     "noImplicitReturns": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": "src"
   },
   "exclude": [
-    "node_modules",
+    "node_modules", // try removing unnecessary exclude
     "build",
     "commitlint.config.js",
     "jest.config.ts",

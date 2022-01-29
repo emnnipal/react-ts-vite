@@ -1,0 +1,47 @@
+# how to setup https://zellwk.com/blog/github-actions-deploy/
+# 1. Generate keygen in server
+#    ssh-keygen -f ~/.ssh/github_actions/id_rsa_your_repo -t rsa -b 4096 -C "your_email@example.com"
+#
+# 2. Add public key to authorized_keys
+#    cat id_rsa_your_repo.pub >> .ssh/authorized_keys
+
+name: 'Manual deploy with rsync'
+on: workflow_dispatch
+
+jobs:
+  manual-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Get the current branch name
+        shell: bash
+        run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
+        id: extract_branch
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.13.0
+          cache: 'yarn'
+
+      - run: yarn install --immutable --immutable-cache
+
+      - name: Set node environment variables
+        run: echo ${{ secrets.DEV_APP_ENV }} | base64 --decode --ignore-garbage > .env
+
+      - name: Build ${{ steps.extract_branch.outputs.branch }} branch
+        run: yarn build
+
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
+          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H ${{ secrets.DEV_SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy ${{ steps.extract_branch.outputs.branch }} branch with rsync
+        run: rsync -avz ./build/ ${{ secrets.SSH_USER }}@${{ secrets.DEV_SSH_HOST }}:/home/ubuntu/path-to-your-repo/build/
