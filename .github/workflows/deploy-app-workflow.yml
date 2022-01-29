@@ -1,0 +1,64 @@
+# how to setup https://zellwk.com/blog/github-actions-deploy/
+# 1. Generate keygen in server
+#    ssh-keygen -f ~/.ssh/github_actions/id_rsa_your_repo -t rsa -b 4096 -C "your_email@example.com"
+#
+# 2. Add public key to authorized_keys
+#    cat id_rsa_your_repo.pub >> .ssh/authorized_keys
+
+name: 'Deploy react app workflow'
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+    secrets:
+      app_env:
+        required: true
+      ssh_private_key:
+        required: true
+      ssh_host:
+        required: true
+      ssh_user:
+        required: true
+
+jobs:
+  deploy-react:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Get the current branch name
+        shell: bash
+        run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
+        id: extract_branch
+
+      - name: Deployment script below
+        run: echo "add your script here to deploy ${{ steps.extract_branch.outputs.branch }} branch"
+
+      # - uses: actions/setup-node@v2
+      #   with:
+      #     node-version: 16.13.0
+      #     cache: 'yarn'
+
+      # - run: yarn install --immutable --immutable-cache
+
+      # - name: Set node environment variables
+      #   run: echo ${{ secrets.app_env }} | base64 --decode --ignore-garbage > .env
+
+      # - name: Build React App of ${{ steps.extract_branch.outputs.branch }} branch
+      #   run: yarn build
+
+      # - name: Install SSH Key
+      #   uses: shimataro/ssh-key-action@v2
+      #   with:
+      #     key: ${{ secrets.ssh_private_key }}
+      #     known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+
+      # - name: Adding Known Hosts
+      #   run: ssh-keyscan -H ${{ secrets.ssh_host }} >> ~/.ssh/known_hosts
+
+      # - name: Deploy React App of ${{ steps.extract_branch.outputs.branch }} branch with rsync to ${{ inputs.environment }}
+      #   run: rsync -avz ./build/ ${{ secrets.ssh_user }}@${{ secrets.ssh_host }}:/home/ubuntu/apps/boilerplate-ts-reactjs/build/

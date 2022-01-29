@@ -1,0 +1,15 @@
+name: 'Deploy to Staging'
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy-to-staging:
+    uses: ./.github/workflows/deploy-app-workflow.yml
+    with:
+      environment: STAGING
+    secrets:
+      app_env: ${{ secrets.STAGING_APP_ENV }}
+      ssh_private_key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+      ssh_host: ${{ secrets.STAGING_SSH_HOST }}
+      ssh_user: ${{ secrets.SSH_USER }}

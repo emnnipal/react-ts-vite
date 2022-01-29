@@ -1,0 +1,13 @@
+name: 'Manual deploy to dev'
+on: workflow_dispatch
+
+jobs:
+  manual-deploy-dev:
+    uses: ./.github/workflows/deploy-app-workflow.yml
+    with:
+      environment: DEV
+    secrets:
+      app_env: ${{ secrets.DEV_APP_ENV }}
+      ssh_private_key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
+      ssh_host: ${{ secrets.DEV_SSH_HOST }}
+      ssh_user: ${{ secrets.SSH_USER }}
