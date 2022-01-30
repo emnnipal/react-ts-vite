@@ -24,4 +24,4 @@ jobs:
         run: yarn lint
 
       - name: Run tests
-        run: yarn test --maxWorkers=4 --no-color --coverage=false
+        run: yarn test --maxWorkers=4 --no-color --coverage=false --onlyChanged
