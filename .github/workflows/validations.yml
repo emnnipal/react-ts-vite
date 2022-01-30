@@ -9,7 +9,7 @@ jobs:
   validations:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
         with:
           ref: ${{ github.ref }}
 
@@ -24,4 +24,4 @@ jobs:
         run: yarn lint
 
       - name: Run tests
-        run: yarn test --maxWorkers=4 --no-color --coverage=false --changedSince=main
+        run: yarn test --maxWorkers=4 --no-color --coverage=false --changedSince=${{ github.event.pull_request.head.sha }}
