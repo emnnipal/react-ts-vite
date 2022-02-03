@@ -27,17 +27,6 @@
     "experimentalDecorators": true,
     "baseUrl": "src"
   },
-  "exclude": [
-    "node_modules", // try removing unnecessary exclude
-    "build",
-    "commitlint.config.js",
-    "jest.config.ts",
-    "babel.config.js",
-    "coverage",
-    "src/**/*.test.ts",
-    "__snapshots__",
-    "jest.setup.ts",
-    "server"
-  ],
-  "include": ["src"]
+  "exclude": ["src/**/*.test.ts", "src/**/*.test.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
