@@ -11,6 +11,7 @@ jobs:
     uses: ./.github/workflows/deploy-app-workflow.yml
     with:
       environment: DEV
+      branch: develop
     secrets:
       app_env: ${{ secrets.DEV_APP_ENV }}
       ssh_private_key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}

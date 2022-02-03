@@ -8,6 +8,7 @@ jobs:
     uses: ./.github/workflows/deploy-app-workflow.yml
     with:
       environment: STAGING
+      branch: ${{ github.ref }}
     secrets:
       app_env: ${{ secrets.STAGING_APP_ENV }}
       ssh_private_key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}

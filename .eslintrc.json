@@ -42,7 +42,7 @@
     "no-prototype-builtins": "off",
     "class-methods-use-this": "off",
     "linebreak-style": "off",
-    "no-undef": "error",
+    "no-undef": "off", // set to error for javascript repositories
     "prefer-default-export": "off",
     "import/prefer-default-export": "off",
     "import/no-cycle": "off",

@@ -12,6 +12,9 @@ on:
       environment:
         required: true
         type: string
+      branch:
+        required: true
+        type: string
     secrets:
       app_env:
         required: true
@@ -26,17 +29,20 @@ jobs:
   deploy-react:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout ${{ inputs.branch }} branch with actions/checkout@v2
+        uses: actions/checkout@v2
         with:
-          ref: ${{ github.ref }}
+          ref: ${{ inputs.branch }}
 
-      - name: Get the current branch name
-        shell: bash
-        run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
-        id: extract_branch
+      # to get the ref branch
+      # take note that this is different from inputs.branch when executed from workflows with workflow_run
+      # - name: Get the current branch name
+      #   shell: bash
+      #   run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
+      #   id: extract_branch
 
       - name: Deployment script below
-        run: echo "add your script here to deploy ${{ steps.extract_branch.outputs.branch }} branch"
+        run: echo "add your script here to deploy ${{ inputs.branch }} branch"
 
       # - uses: actions/setup-node@v2
       #   with:
@@ -48,7 +54,7 @@ jobs:
       # - name: Set node environment variables
       #   run: echo ${{ secrets.app_env }} | base64 --decode --ignore-garbage > .env
 
-      # - name: Build React App of ${{ steps.extract_branch.outputs.branch }} branch
+      # - name: Build React App of ${{ inputs.branch }} branch
       #   run: yarn build
 
       # - name: Install SSH Key
@@ -60,5 +66,5 @@ jobs:
       # - name: Adding Known Hosts
       #   run: ssh-keyscan -H ${{ secrets.ssh_host }} >> ~/.ssh/known_hosts
 
-      # - name: Deploy React App of ${{ steps.extract_branch.outputs.branch }} branch with rsync to ${{ inputs.environment }}
-      #   run: rsync -avz ./build/ ${{ secrets.ssh_user }}@${{ secrets.ssh_host }}:/home/ubuntu/apps/boilerplate-ts-reactjs/build/
+      # - name: Deploy React App of ${{ inputs.branch }} branch with rsync to ${{ inputs.environment }}
+      #   run: rsync -avz ./build/ ${{ secrets.ssh_user }}@${{ secrets.ssh_host }}:/home/ubuntu/apps/relloe-frontend/build/
