@@ -88,6 +88,10 @@
           "regex": "^I[A-Z]",
           "match": true
         }
+      },
+      {
+        "selector": ["typeAlias", "enum", "class", "typeParameter"],
+        "format": ["PascalCase"]
       }
     ],
     "react/require-default-props": "off",
