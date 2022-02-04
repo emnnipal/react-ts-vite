@@ -9,7 +9,24 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        'default-src': [
+          "'self'",
+          /* Whitelist sites here, example below  */
+          'https://iuhzd7tbb9.execute-api.us-west-1.amazonaws.com',
+          'https://98jpgdm7na.execute-api.us-west-1.amazonaws.com',
+        ],
+      },
+    },
+    referrerPolicy: {
+      policy: 'no-referrer-when-downgrade',
+    },
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+  })
+);
 app.use(express.json());
 app.use(
   '/',
