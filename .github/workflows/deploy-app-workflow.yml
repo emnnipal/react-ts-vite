@@ -29,11 +29,6 @@ jobs:
   deploy-react:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout ${{ inputs.branch }} branch with actions/checkout@v2
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ inputs.branch }}
-
       # to get the ref branch
       # take note that this is different from inputs.branch when executed from workflows with workflow_run
       # - name: Get the current branch name
@@ -44,11 +39,17 @@ jobs:
       - name: Deployment script below
         run: echo "add your script here to deploy ${{ inputs.branch }} branch"
 
+      # - name: Checkout ${{ inputs.branch }} branch
+      #   uses: actions/checkout@v2
+      #   with:
+      #     ref: ${{ inputs.branch }}
+
       # - uses: actions/setup-node@v2
       #   with:
       #     node-version: 16.13.0
       #     cache: 'yarn'
 
+      # - name: Install dependencies
       # - run: yarn install --immutable --immutable-cache
 
       # - name: Set node environment variables
