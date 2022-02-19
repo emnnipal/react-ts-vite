@@ -8,9 +8,10 @@ jobs:
     name: Lint and unit test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout main branch
+        uses: actions/checkout@v1
         with:
-          ref: ${{ github.ref }}
+          ref: main
 
       - uses: pnpm/action-setup@v2.0.1
         with:
@@ -37,10 +38,10 @@ jobs:
     outputs:
       skipped: ${{ steps.changelog.outputs.skipped }}
     steps:
-      - name: Checkout ${{ github.ref }} branch
+      - name: Checkout main branch
         uses: actions/checkout@v1
         with:
-          ref: ${{ github.ref }}
+          ref: main
 
       - id: changelog
         name: Conventional Changelog
