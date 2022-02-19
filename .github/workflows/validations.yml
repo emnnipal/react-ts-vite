@@ -1,4 +1,4 @@
-name: 'Pull Request Checks'
+name: 'Unit tests & linter'
 on:
   pull_request:
     branches: [main, develop]
@@ -28,12 +28,3 @@ jobs:
 
       - name: Run tests
         run: pnpm test -- --maxWorkers=4 --no-color --coverage=false --changedSince=origin/main
-
-  check:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: thehanimo/pr-title-checker@v1.3.3
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          pass_on_octokit_error: false
-          configuration_path: '.github/pr-title-checker-config.json'
