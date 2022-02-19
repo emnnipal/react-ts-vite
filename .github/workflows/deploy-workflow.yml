@@ -1,7 +1,7 @@
-name: 'Deploy to Staging'
+name: 'Deploy'
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
 
 jobs:
   validations:
@@ -31,8 +31,23 @@ jobs:
       - name: Run tests
         run: pnpm test -- --maxWorkers=4 --no-color --coverage=false --changedSince=origin/main
 
+  deploy-to-dev:
+    name: Deploy to Dev
+    if: github.event.ref == 'refs/heads/develop'
+    needs: validations
+    uses: ./.github/workflows/deploy-app-workflow.yml
+    with:
+      environment: DEV
+      branch: develop
+    secrets:
+      app_env: ${{ secrets.DEV_APP_ENV }}
+      ssh_private_key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
+      ssh_host: ${{ secrets.DEV_SSH_HOST }}
+      ssh_user: ${{ secrets.SSH_USER }}
+
   release:
     name: Release
+    if: github.event.ref == 'refs/heads/main'
     needs: validations
     runs-on: ubuntu-latest
     outputs:
