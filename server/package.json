@@ -9,10 +9,10 @@
   "author": "Emmanuel Nipal <emnnipal@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "dotenv": "^14.1.0"
+    "dotenv": "^14.3.2"
   },
   "dependencies": {
-    "express": "^4.17.2",
-    "helmet": "^5.0.1"
+    "express": "^4.17.3",
+    "helmet": "^5.0.2"
   }
 }
