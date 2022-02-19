@@ -17,8 +17,7 @@ jobs:
         with:
           version: 6.20.3
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: 16.13.0
           cache: 'pnpm'
@@ -30,4 +29,4 @@ jobs:
         run: pnpm lint
 
       - name: Run tests
-        run: pnpm test --maxWorkers=4 --no-color --coverage=false --changedSince=origin/main
+        run: pnpm test -- --maxWorkers=4 --no-color --coverage=false --changedSince=origin/main
