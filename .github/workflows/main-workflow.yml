@@ -37,17 +37,10 @@ jobs:
     outputs:
       skipped: ${{ steps.changelog.outputs.skipped }}
     steps:
-      - name: Wait for tests & linter to succeed
-        uses: lewagon/wait-on-check-action@v1.0.0
+      - name: Checkout ${{ github.ref }} branch
+        uses: actions/checkout@v1
         with:
           ref: ${{ github.ref }}
-          check-name: 'validations'
-          repo-token: ${{ secrets.PAT }}
-          wait-interval: 10
-
-      - uses: actions/checkout@v1
-        with:
-          ref: main
 
       - id: changelog
         name: Conventional Changelog
