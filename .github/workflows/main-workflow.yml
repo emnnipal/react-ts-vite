@@ -1,0 +1,84 @@
+name: 'Deploy to Staging'
+on:
+  release:
+    types: [published]
+
+jobs:
+  validations:
+    name: Lint and unit test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          ref: ${{ github.ref }}
+
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.31.0
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.13.0
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run ESLint
+        run: pnpm lint
+
+      - name: Run tests
+        run: pnpm test -- --maxWorkers=4 --no-color --coverage=false --changedSince=origin/main
+
+  release:
+    name: Release
+    needs: validations
+    runs-on: ubuntu-latest
+    outputs:
+      skipped: ${{ steps.changelog.outputs.skipped }}
+    steps:
+      - name: Wait for tests & linter to succeed
+        uses: lewagon/wait-on-check-action@v1.0.0
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'validations'
+          repo-token: ${{ secrets.PAT }}
+          wait-interval: 10
+
+      - uses: actions/checkout@v1
+        with:
+          ref: main
+
+      - id: changelog
+        name: Conventional Changelog
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          git-message: 'chore(release): {version} [no ci]'
+          git-user-email: emnnipal@gmail.com
+          git-user-name: Emmanuel Nipal
+          github-token: ${{ secrets.PAT }}
+          output-file: 'false'
+
+      - name: Create Github Release
+        uses: actions/create-release@v1
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
+
+  deploy-to-staging:
+    name: Deploy to Staging
+    if: needs.release.outputs.skipped == 'false'
+    needs: release
+    uses: ./.github/workflows/deploy-app-workflow.yml
+    with:
+      environment: STAGING
+      branch: ${{ github.ref }}
+    secrets:
+      app_env: ${{ secrets.STAGING_APP_ENV }}
+      ssh_private_key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+      ssh_host: ${{ secrets.STAGING_SSH_HOST }}
+      ssh_user: ${{ secrets.SSH_USER }}
