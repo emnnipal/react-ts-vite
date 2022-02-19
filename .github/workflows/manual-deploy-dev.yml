@@ -1,4 +1,4 @@
-name: 'Manual deploy to dev'
+name: 'Manual deploy to Dev'
 on: workflow_dispatch
 
 jobs:

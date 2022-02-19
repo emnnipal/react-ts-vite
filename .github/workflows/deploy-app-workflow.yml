@@ -5,7 +5,7 @@
 # 2. Add public key to authorized_keys
 #    cat id_rsa_your_repo.pub >> .ssh/authorized_keys
 
-name: 'Deploy react app workflow'
+name: 'Deploy React App Workflow'
 on:
   workflow_call:
     inputs:
