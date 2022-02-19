@@ -26,10 +26,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - run: yarn install --immutable --immutable-cache
-
       - name: Run ESLint
-        run: yarn lint
+        run: pnpm lint
 
       - name: Run tests
-        run: yarn test --maxWorkers=4 --no-color --coverage=false --changedSince=origin/main
+        run: pnpm test --maxWorkers=4 --no-color --coverage=false --changedSince=origin/main
