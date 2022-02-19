@@ -63,6 +63,8 @@ jobs:
           release_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
+      - run: echo ${{ steps.changelog.outputs.tag }}
+
   deploy-to-staging:
     name: Deploy to Staging
     if: needs.release.outputs.skipped == 'false'
