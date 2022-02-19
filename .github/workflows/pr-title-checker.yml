@@ -10,10 +10,10 @@ on:
 
 jobs:
   check:
+    name: Check PR title
     runs-on: ubuntu-latest
     steps:
-      - name: Check PR title
-        uses: thehanimo/pr-title-checker@v1.3.3
+      - uses: thehanimo/pr-title-checker@v1.3.3
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           pass_on_octokit_error: false
