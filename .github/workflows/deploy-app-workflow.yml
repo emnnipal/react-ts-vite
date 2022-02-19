@@ -36,27 +36,27 @@ jobs:
       #   run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
       #   id: extract_branch
 
+      - name: Checkout ${{ inputs.branch }} branch
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ inputs.branch }}
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.13.0
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --immutable --immutable-cache
+
+      - name: Set node environment variables
+        run: echo ${{ secrets.app_env }} | base64 --decode --ignore-garbage > .env
+
+      - name: Build React App
+        run: yarn build
+
       - name: Deployment script below
         run: echo "add your script here to deploy ${{ inputs.branch }} branch"
-
-      # - name: Checkout ${{ inputs.branch }} branch
-      #   uses: actions/checkout@v2
-      #   with:
-      #     ref: ${{ inputs.branch }}
-
-      # - uses: actions/setup-node@v2
-      #   with:
-      #     node-version: 16.13.0
-      #     cache: 'yarn'
-
-      # - name: Install dependencies
-      #   run: yarn install --immutable --immutable-cache
-
-      # - name: Set node environment variables
-      #   run: echo ${{ secrets.app_env }} | base64 --decode --ignore-garbage > .env
-
-      # - name: Build React App
-      #   run: yarn build
 
       # - name: Install SSH Key
       #   uses: shimataro/ssh-key-action@v2
