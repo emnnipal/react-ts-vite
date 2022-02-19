@@ -41,13 +41,18 @@ jobs:
         with:
           ref: ${{ inputs.branch }}
 
-      - uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v2.0.1
         with:
-          node-version: 16.13.0
-          cache: 'yarn'
+          version: 6.20.3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
+        run: pnpm install
 
       - name: Set node environment variables
         run: echo ${{ secrets.app_env }} | base64 --decode --ignore-garbage > .env
