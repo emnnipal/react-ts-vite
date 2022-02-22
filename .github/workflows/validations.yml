@@ -31,7 +31,7 @@ jobs:
         run: pnpm test -- --maxWorkers=4 --no-color --coverage=false --changedSince=origin/main
 
   test-build:
-    name: Test Vite Build
+    name: Test App Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
