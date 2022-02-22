@@ -5,6 +5,7 @@ on:
 
 jobs:
   validations:
+    name: PR lint and test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -28,3 +29,26 @@ jobs:
 
       - name: Run tests
         run: pnpm test -- --maxWorkers=4 --no-color --coverage=false --changedSince=origin/main
+
+  test-build:
+    name: Test Vite Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          ref: ${{ github.ref }}
+
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.31.0
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16.13.0
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build app
+        run: pnpm build
