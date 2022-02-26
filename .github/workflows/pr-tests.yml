@@ -48,5 +48,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Check Types
-        run: pnpm build -- --noEmit
+      - name: Build app
+        run: pnpm build
