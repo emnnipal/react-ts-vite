@@ -14,10 +14,10 @@ dist/
 
 # env
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.base64
+.env.dev
+.env.staging
+.env.production
 
 # misc
 .DS_Store
