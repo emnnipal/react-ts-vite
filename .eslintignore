@@ -9,6 +9,7 @@ server/
 # config
 jest.*.ts
 *.config.js
+*.config.ts
 
 # env
 .env
