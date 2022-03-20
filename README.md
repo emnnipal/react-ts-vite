@@ -1,6 +1,6 @@
 # react-ts-vite
 
-Boilerplate for ReactJS with CRA and TypeScript
+Boilerplate for ReactJS with Vite and TypeScript
 
 ## Getting Started
 
@@ -24,6 +24,6 @@ Boilerplate for ReactJS with CRA and TypeScript
 
 ## Tech Stack
 
-- React JS with vite
+- React JS with Vite
 - TypeScript
 - Jest for testing
