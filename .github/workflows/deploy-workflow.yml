@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Check Types
+        run: pnpm check:types
+
       - name: Run ESLint
         run: pnpm lint
 
@@ -32,7 +35,7 @@ jobs:
         run: pnpm test -- --maxWorkers=4 --no-color --coverage=false --changedSince=origin/main
 
   deploy-to-dev:
-    name: Deploy to Dev
+    name: Deploy React App to Dev
     if: github.event.ref == 'refs/heads/develop'
     needs: lint-and-test
     uses: ./.github/workflows/deploy-app-workflow.yml
@@ -80,7 +83,7 @@ jobs:
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
   deploy-to-staging:
-    name: Deploy to Staging
+    name: Deploy React App to Staging
     if: needs.release.outputs.skipped == 'false'
     needs: release
     uses: ./.github/workflows/deploy-app-workflow.yml
