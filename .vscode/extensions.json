@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "mikestead.dotenv",
+    "firsttris.vscode-jest-runner",
+    "ecmel.vscode-html-css",
+    "styled-components.vscode-styled-components"
+  ]
+}
