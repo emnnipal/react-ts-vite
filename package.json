@@ -15,7 +15,7 @@
     "lint:fix": "eslint --fix --ext .ts,.tsx ./src",
     "format": "npx prettier --write .",
     "server:start": "cross-env NODE_ENV=production node server/server.js",
-    "pm2:start": "pm2 start npm --name 'sample-app-name' -- run server:start",
+    "pm2:start": "pm2 start npm --name 'test-app-name' -- run server:start",
     "deploy": "npm run build && npm run pm2:start",
     "generate:env": "base64 -w 0 < .env > .env.base64",
     "prepare": "husky install"
