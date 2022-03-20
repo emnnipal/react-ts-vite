@@ -4,7 +4,13 @@ import { ReactComponent as ReactLogo } from './logo.svg';
 import { useImmer } from 'use-immer';
 
 const App = () => {
-  const [count, setCount] = useImmer(0);
+  const [state, setState] = useImmer({ count: 0 });
+
+  const handleIncrement = () => {
+    setState((prevState) => {
+      prevState.count += 1;
+    });
+  };
 
   return (
     <div className="App">
@@ -12,8 +18,8 @@ const App = () => {
         <ReactLogo className="App-logo" />
         <p>Hello Vite + React!</p>
         <p>
-          <button type="button" onClick={() => setCount((prevCount) => prevCount + 1)}>
-            count is: {count}
+          <button type="button" onClick={handleIncrement}>
+            count is: {state.count}
           </button>
         </p>
         <p>

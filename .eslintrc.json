@@ -81,7 +81,7 @@
       }
     ],
     "react/require-default-props": "off", // Since we are not using prop-types
-    "no-param-reassign": ["error", { "ignorePropertyModificationsFor": ["state", "prevState"] }],
+    "no-param-reassign": "off", // Since we are using useImmer
     "@typescript-eslint/naming-convention": [
       "error",
       {
