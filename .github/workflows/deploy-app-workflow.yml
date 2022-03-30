@@ -4,6 +4,9 @@
 #
 # 2. Add public key to authorized_keys
 #    cat id_rsa_your_repo.pub >> .ssh/authorized_keys
+#
+# 3. copy your Private Key and paste it into Github Secrets.
+#    cat github_actions/id_rsa_your_repo >> Github Secrets -> ssh_private_key
 
 name: 'Deploy React App Workflow'
 on:

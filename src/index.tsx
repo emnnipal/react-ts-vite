@@ -2,11 +2,11 @@ import './index.scss';
 import App from './App';
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
-ReactDOM.render(
+const container = document.getElementById('root');
+createRoot(container as Element).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
