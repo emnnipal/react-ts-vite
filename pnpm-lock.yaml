@@ -54,6 +54,7 @@ specifiers:
   vite-plugin-svgr: ^1.1.0
   vite-tsconfig-paths: ^3.4.1
   yup: ^0.32.11
+  zustand: 4.0.0-rc.0
 
 dependencies:
   '@testing-library/dom': 7.31.2
@@ -71,6 +72,7 @@ dependencies:
   styled-components: 5.3.5_1a79be909b93ec9b98501cf963be33c8
   use-immer: 0.7.0_immer@9.0.12+react@18.0.0
   yup: 0.32.11
+  zustand: 4.0.0-rc.0_immer@9.0.12+react@18.0.0
 
 devDependencies:
   '@commitlint/cli': 16.2.3
@@ -7678,6 +7680,17 @@ packages:
       react: 18.0.0
     dev: false
 
+  /use-sync-external-store/1.0.0_react@18.0.0:
+    resolution:
+      {
+        integrity: sha512-AFVsxg5GkFg8GDcxnl+Z0lMAz9rE8DGJCc28qnBuQF7lac57B5smLcT37aXpXIIPz75rW4g3eXHPjhHwdGskOw==,
+      }
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0-rc
+    dependencies:
+      react: 18.0.0
+    dev: false
+
   /util-deprecate/1.0.2:
     resolution: { integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8= }
     dev: true
@@ -8068,4 +8081,24 @@ packages:
       nanoclone: 0.2.1
       property-expr: 2.0.5
       toposort: 2.0.2
+    dev: false
+
+  /zustand/4.0.0-rc.0_immer@9.0.12+react@18.0.0:
+    resolution:
+      {
+        integrity: sha512-jMimx6EIlLb/hwgnkVZ4Wd/UI73wXedUB6L/kcdIYbOYHcjIFRc7JEB8IXFZt+1rQq2qwuts7kN6kuHhFss47A==,
+      }
+    engines: { node: '>=12.7.0' }
+    peerDependencies:
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      immer: 9.0.12
+      react: 18.0.0
+      use-sync-external-store: 1.0.0_react@18.0.0
     dev: false

@@ -1,15 +1,17 @@
 import './App.scss';
 import { ReactComponent as ReactLogo } from './logo.svg';
 
-import { useImmer } from 'use-immer';
+import { useState } from 'react';
+import useBearStore from 'shared/store/Bear';
 
 const App = () => {
-  const [state, setState] = useImmer({ count: 0 });
+  const [count, setCount] = useState(0);
+  const bearsCount = useBearStore((state) => state.bearsCount);
+  const increasePopulation = useBearStore((state) => state.increasePopulation);
+  const removeAllBears = useBearStore((state) => state.removeAllBears);
 
   const handleIncrement = () => {
-    setState((prevState) => {
-      prevState.count += 1;
-    });
+    setCount((prevCount) => prevCount + 1);
   };
 
   return (
@@ -19,9 +21,18 @@ const App = () => {
         <p>Hello Vite + React!</p>
         <p>
           <button type="button" onClick={handleIncrement}>
-            count is: {state.count}
+            count is: {count}
           </button>
         </p>
+        <p>
+          <button type="button" onClick={increasePopulation}>
+            Bear population is: {bearsCount}
+          </button>
+        </p>
+        <button type="button" onClick={removeAllBears}>
+          Remove all bears
+        </button>
+
         <p>
           Edit <code>App.tsx</code> and save to test HMR updates.
         </p>
