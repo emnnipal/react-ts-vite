@@ -19,7 +19,7 @@ Boilerplate for ReactJS with Vite and TypeScript
 3. Create an env file and copy the variables from .env.example file.
 4. Start the app in development mode
    ```sh
-   pnpm start
+   pnpm dev
    ```
 
 ## Tech Stack

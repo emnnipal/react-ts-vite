@@ -18,5 +18,6 @@ jest.*.ts
 *-error.log
 
 # misc
+*.html
 .eslintcache
 .vscode
