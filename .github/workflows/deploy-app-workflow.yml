@@ -75,4 +75,4 @@ jobs:
       #   run: ssh-keyscan -H ${{ secrets.ssh_host }} >> ~/.ssh/known_hosts
 
       # - name: Deploy app with rsync to ${{ inputs.environment }}
-      #   run: rsync -avz --delete ./build/ ${{ secrets.ssh_user }}@${{ secrets.ssh_host }}:/home/ubuntu/apps/boilerplate-react-ts-cra/build/
+      #   run: rsync -avz --delete ./build/ ${{ secrets.ssh_user }}@${{ secrets.ssh_host }}:/home/ubuntu/apps/<repository name>/build/
