@@ -17,7 +17,8 @@
     "server:start": "cross-env NODE_ENV=production node server/server.js",
     "pm2:start": "pm2 start npm --name 'sample-app-name' -- run server:start",
     "deploy": "npm run build && npm run pm2:start",
-    "generate:env": "base64 -w 0 < .env > .env.base64",
+    "generate:env": "openssl base64 -A -in .env -out .env.base64",
+    "decode:env": "openssl base64 -d -A -in .env.base64 -out .env.output",
     "prepare": "husky install"
   },
   "lint-staged": {
