@@ -33,7 +33,7 @@ export default ({ mode }) => {
     ],
     base: '/',
     server: {
-      port: Number(process.env.PORT),
+      port: Number(process.env.PORT || 3000),
     },
     preview: {
       port: 8080,
