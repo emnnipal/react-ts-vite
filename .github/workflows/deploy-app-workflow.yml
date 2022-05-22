@@ -54,7 +54,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Set node environment variables
         run: echo ${{ secrets.app_env }} | base64 --decode --ignore-garbage > .env
