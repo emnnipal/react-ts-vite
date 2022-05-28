@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+
 import { defineConfig } from 'vite';
 import { dependencies } from './package.json';
 import react from '@vitejs/plugin-react';
@@ -37,6 +39,10 @@ export default ({ mode }) => {
     },
     preview: {
       port: 8080,
+    },
+    test: {
+      globals: true,
+      environment: 'jsdom',
     },
     build: {
       outDir: 'build',

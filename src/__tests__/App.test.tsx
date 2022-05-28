@@ -1,11 +1,14 @@
 import App from '../App';
 
 import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
 
-test('renders learn react link', () => {
-  expect(App).toBeTruthy();
+describe('App', () => {
+  it('renders learn react link', () => {
+    expect(App).toBeTruthy();
 
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+    render(<App />);
+    const linkElement = screen.getByText(/learn react/i);
+    expect(linkElement).toBeDefined();
+  });
 });
