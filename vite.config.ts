@@ -43,6 +43,7 @@ export default ({ mode }) => {
     test: {
       globals: true,
       environment: 'jsdom',
+      setupFiles: 'src/setupTest.ts',
     },
     build: {
       outDir: 'build',
