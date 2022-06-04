@@ -27,7 +27,7 @@ jobs:
         run: pnpm lint
 
       - name: Run tests
-        run: pnpm test -- --changed ${{ github.base_ref }}
+        run: pnpm test -- --changed ${{ github.head_ref }}
 
   pr-check-types:
     runs-on: ubuntu-latest
