@@ -4,8 +4,6 @@ import { ReactComponent as ReactLogo } from './logo.svg';
 import { useState } from 'react';
 import useBearStore from 'shared/store/Bear';
 
-const test = '';
-
 const App = () => {
   const [count, setCount] = useState(0);
   const bearsCount = useBearStore((state) => state.bearsCount);
