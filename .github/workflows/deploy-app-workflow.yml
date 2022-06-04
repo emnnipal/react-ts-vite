@@ -32,22 +32,10 @@ jobs:
   deploy-react:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
+    concurrency:
+      cancel-in-progress: true
+      group: ${{ inputs.environment }}
     steps:
-      # to get the ref branch
-      # take note that this is different from inputs.branch when executed from workflows with workflow_run
-      # - name: Get the current branch name
-      #   shell: bash
-      #   run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
-      #   id: extract_branch
-
-      - name: Dev
-        if: ${{ secrets.app_env == 'DEV' }}
-        run: echo "env is dev"
-
-      - name: Staging
-        if: ${{ secrets.app_env == 'STAGING'}}
-        run: echo "env is staging"
-
       - name: Checkout ${{ inputs.branch }} branch
         uses: actions/checkout@v3
         with:
@@ -62,6 +50,12 @@ jobs:
           node-version: 16.13.0
           cache: 'pnpm'
 
+      - name: Check ${{ inputs.environment }} env
+        run: |
+          [[ "${{ secrets.ssh_private_key }}" == "DEV" ]] && echo "env isDev"
+          [[ "${{ secrets.ssh_private_key }}" == "STAGING" ]] && echo "env isStaging"
+          echo "environment ${{ inputs.environment }}"
+
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
 
@@ -73,6 +67,13 @@ jobs:
 
       - name: Deployment script below
         run: echo "add your script here to deploy ${{ inputs.branch }} branch"
+
+      # to get the ref branch
+      # take note that this is different from inputs.branch when executed from workflows with workflow_run
+      # - name: Get the current branch name
+      #   shell: bash
+      #   run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
+      #   id: extract_branch
 
       # - name: Install SSH Key
       #   uses: shimataro/ssh-key-action@v2
