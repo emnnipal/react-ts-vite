@@ -40,12 +40,6 @@ jobs:
       #   run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
       #   id: extract_branch
 
-      - name: TEST ENV
-        if: ${{ secrets.app_env == 'DEV' }}
-        run: |
-          [[ "${{ secrets.app_env }}" == "DEV" ]] && echo "env isDev"
-          [[ "${{ secrets.app_env }}" == "STAGING" ]] && echo "env isStaging"
-
       - name: Checkout ${{ inputs.branch }} branch
         uses: actions/checkout@v3
         with:
@@ -59,6 +53,12 @@ jobs:
         with:
           node-version: 16.13.0
           cache: 'pnpm'
+
+      - name: TEST ENV
+        if: ${{ secrets.app_env == 'DEV' }}
+        run: |
+          [[ "${{ secrets.app_env }}" == "DEV" ]] && echo "env isDev"
+          [[ "${{ secrets.app_env }}" == "STAGING" ]] && echo "env isStaging"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
