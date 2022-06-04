@@ -36,13 +36,6 @@ jobs:
       cancel-in-progress: true
       group: ${{ inputs.environment }}
     steps:
-      # to get the ref branch
-      # take note that this is different from inputs.branch when executed from workflows with workflow_run
-      # - name: Get the current branch name
-      #   shell: bash
-      #   run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
-      #   id: extract_branch
-
       - name: Checkout ${{ inputs.branch }} branch
         uses: actions/checkout@v3
         with:
@@ -74,6 +67,13 @@ jobs:
 
       - name: Deployment script below
         run: echo "add your script here to deploy ${{ inputs.branch }} branch"
+
+      # to get the ref branch
+      # take note that this is different from inputs.branch when executed from workflows with workflow_run
+      # - name: Get the current branch name
+      #   shell: bash
+      #   run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
+      #   id: extract_branch
 
       # - name: Install SSH Key
       #   uses: shimataro/ssh-key-action@v2

@@ -3,6 +3,10 @@ on:
   push:
     branches: [main, develop]
 
+concurrency:
+  cancel-in-progress: true
+  group: ${{ inputs.environment }
+
 jobs:
   lint-and-test:
     name: Lint and unit test
