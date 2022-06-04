@@ -58,6 +58,7 @@ jobs:
         run: |
           [[ "${{ secrets.ssh_private_key }}" == "DEV" ]] && echo "env isDev"
           [[ "${{ secrets.ssh_private_key }}" == "STAGING" ]] && echo "env isStaging"
+          echo "${{ inputs.environment }}"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
