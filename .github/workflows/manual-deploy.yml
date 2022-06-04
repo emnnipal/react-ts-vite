@@ -13,7 +13,7 @@ on:
 
 jobs:
   manual-deploy-dev:
-    name: 'Deploy to ${{ github.event.inputs.environment }}'
+    name: '${{ github.event.inputs.environment }}:${{ github.ref }}'
     uses: ./.github/workflows/deploy-app-workflow.yml
     with:
       environment: ${{ github.event.inputs.environment }}
