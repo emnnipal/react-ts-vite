@@ -70,7 +70,7 @@ jobs:
           git-message: 'chore(release): {version} [no ci]'
           git-user-email: emnnipal@gmail.com
           git-user-name: Emmanuel Nipal
-          github-token: ${{ secrets.PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           output-file: 'false'
 
       - name: Create Github Release
