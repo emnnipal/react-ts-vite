@@ -58,7 +58,6 @@ jobs:
         run: |
           [[ "${{ secrets.app_env }}" == "UE9SVD0zMDAxCgpWSVRFX0VOVj0iZGV2ZWxvcG1lbnQiClZJVEVfQVBJX1VSTD0iYXBpLmNvbSIKVklURV9TRUNSRVRfS0VZPSJzZWNyZXQta2V5Ig==" ]] && echo "env isDev"
           [[ "${{ secrets.app_env }}" == "STAGING" ]] && echo "env isStaging"
-          exit 0
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
