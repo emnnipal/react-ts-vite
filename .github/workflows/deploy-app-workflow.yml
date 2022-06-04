@@ -57,11 +57,11 @@ jobs:
           node-version: 16.13.0
           cache: 'pnpm'
 
-      - name: TEST ENV
+      - name: Check ${{ inputs.environment }} env
         run: |
           [[ "${{ secrets.ssh_private_key }}" == "DEV" ]] && echo "env isDev"
           [[ "${{ secrets.ssh_private_key }}" == "STAGING" ]] && echo "env isStaging"
-          echo "${{ inputs.environment }}"
+          echo "environment ${{ inputs.environment }}"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
