@@ -5,7 +5,7 @@ on:
 
 concurrency:
   cancel-in-progress: true
-  group: ${{ inputs.environment }}
+  group: ${{ github.ref }}
 
 jobs:
   lint-and-test:
