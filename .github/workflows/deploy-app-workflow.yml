@@ -41,11 +41,11 @@ jobs:
       #   id: extract_branch
 
       - name: Dev
-        if: ${{ secrets.app_env }} == 'DEV'
+        if: ${{ secrets.app_env == 'DEV' }}
         run: echo "env is dev"
 
       - name: Staging
-        if: ${{ secrets.app_env }} == 'STAGING'
+        if: ${{ secrets.app_env == 'STAGING'}}
         run: echo "env is staging"
 
       - name: Checkout ${{ inputs.branch }} branch
