@@ -55,7 +55,6 @@ jobs:
           cache: 'pnpm'
 
       - name: TEST ENV
-        if: ${{ secrets.app_env == 'DEV' }}
         run: |
           [[ "${{ secrets.app_env }}" == "DEV" ]] && echo "env isDev"
           [[ "${{ secrets.app_env }}" == "STAGING" ]] && echo "env isStaging"
