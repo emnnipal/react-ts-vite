@@ -40,7 +40,7 @@ jobs:
     needs: lint-and-test
     uses: ./.github/workflows/deploy-app-workflow.yml
     with:
-      environment: DEV
+      environment: dev
       branch: develop
     secrets:
       app_env: ${{ secrets.DEV_APP_ENV }}
@@ -89,7 +89,7 @@ jobs:
     needs: release
     uses: ./.github/workflows/deploy-app-workflow.yml
     with:
-      environment: STAGING
+      environment: staging
       branch: 'refs/tags/${{needs.release.outputs.tag}}'
     secrets:
       app_env: ${{ secrets.STAGING_APP_ENV }}

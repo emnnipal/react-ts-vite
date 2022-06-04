@@ -31,6 +31,7 @@ on:
 jobs:
   deploy-react:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     steps:
       # to get the ref branch
       # take note that this is different from inputs.branch when executed from workflows with workflow_run
@@ -38,6 +39,14 @@ jobs:
       #   shell: bash
       #   run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
       #   id: extract_branch
+
+      - name: Dev
+        if: ${{ secrets.app_env == 'DEV' }}
+        run: echo "env is dev"
+
+      - name: Staging
+        if: ${{ secrets.app_env == 'STAGING'}}
+        run: echo "env is staging"
 
       - name: Checkout ${{ inputs.branch }} branch
         uses: actions/checkout@v3
