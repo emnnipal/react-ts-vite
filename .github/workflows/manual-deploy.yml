@@ -20,10 +20,9 @@ jobs:
       environment: dev
       branch: ${{ github.ref }}
     secrets:
-      # app_env: ${{ secrets.DEV_APP_ENV }}
       app_env: ${{ secrets.APP_ENV }}
-      ssh_private_key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
-      ssh_host: ${{ secrets.DEV_SSH_HOST }}
+      ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+      ssh_host: ${{ secrets.SSH_HOST }}
       ssh_user: ${{ secrets.SSH_USER }}
 
   manual-deploy-staging:
@@ -34,8 +33,7 @@ jobs:
       environment: staging
       branch: ${{ github.ref }}
     secrets:
-      # app_env: ${{ secrets.STAGING_APP_ENV }}
       app_env: ${{ secrets.APP_ENV }}
-      ssh_private_key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
-      ssh_host: ${{ secrets.STAGING_SSH_HOST }}
+      ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+      ssh_host: ${{ secrets.SSH_HOST }}
       ssh_user: ${{ secrets.SSH_USER }}

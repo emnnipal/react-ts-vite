@@ -56,8 +56,8 @@ jobs:
 
       - name: TEST ENV
         run: |
-          [[ "${{ secrets.app_env }}" == "UE9SVD0zMDAxCgpWSVRFX0VOVj0iZGV2ZWxvcG1lbnQiClZJVEVfQVBJX1VSTD0iYXBpLmNvbSIKVklURV9TRUNSRVRfS0VZPSJzZWNyZXQta2V5Ig==" ]] && echo "env isDev"
-          [[ "${{ secrets.app_env }}" == "STAGING" ]] && echo "env isStaging"
+          [[ "${{ secrets.ssh_private_key }}" == "DEV" ]] && echo "env isDev"
+          [[ "${{ secrets.ssh_private_key }}" == "STAGING" ]] && echo "env isStaging"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
