@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout ${{ github.ref }} branch
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.ref }}
 
@@ -32,7 +32,7 @@ jobs:
         run: pnpm lint
 
       - name: Run tests
-        run: pnpm test
+        run: pnpm test -- --changed main
 
   deploy-to-dev:
     name: Deploy React App to Dev

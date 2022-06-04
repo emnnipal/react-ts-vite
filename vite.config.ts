@@ -58,12 +58,12 @@ export default ({ mode }) => {
         },
       },
     },
+    // NOTE: handle env variables here if you're using jest since import.meta conflicts with jest
     define: {
-      // handle env variables here since import.meta conflicts with jest
-      'process.env.VITE_ENV': `"${process.env.VITE_ENV}"`,
-      'process.env.VITE_API_URL': `"${process.env.VITE_API_URL}"`,
-      'process.env.VITE_SECRET_KEY': `"${process.env.VITE_SECRET_KEY}"`,
       'process.env.MODE': `"${mode}"`,
+      // 'process.env.VITE_ENV': `"${process.env.VITE_ENV}"`,
+      // 'process.env.VITE_API_URL': `"${process.env.VITE_API_URL}"`,
+      // 'process.env.VITE_SECRET_KEY': `"${process.env.VITE_SECRET_KEY}"`,
     },
   });
 };
