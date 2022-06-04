@@ -13,7 +13,8 @@ on:
 
 jobs:
   manual-deploy-dev:
-    if: ${{ github.event.inputs.environment }} == 'dev'
+    name: 'Deploy to Dev'
+    if: ${{ github.event.inputs.environment == 'dev' }}
     uses: ./.github/workflows/deploy-app-workflow.yml
     with:
       environment: DEV
@@ -25,7 +26,8 @@ jobs:
       ssh_user: ${{ secrets.SSH_USER }}
 
   manual-deploy-staging:
-    if: ${{ github.event.inputs.environment }} == 'staging'
+    name: 'Deploy to Staging'
+    if: ${{ github.event.inputs.environment == 'staging' }}
     uses: ./.github/workflows/deploy-app-workflow.yml
     with:
       environment: STAGING
