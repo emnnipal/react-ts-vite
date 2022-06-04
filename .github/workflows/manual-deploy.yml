@@ -13,10 +13,11 @@ on:
 
 jobs:
   manual-deploy-dev:
-    name: 'Deploy to ${{ github.event.inputs.environment }}'
+    name: 'Deploy to Dev'
+    if: ${{ github.event.inputs.environment == 'dev' }}
     uses: ./.github/workflows/deploy-app-workflow.yml
     with:
-      environment: ${{ github.event.inputs.environment }}
+      environment: dev
       branch: ${{ github.ref }}
     secrets:
       app_env: ${{ secrets.APP_ENV }}
@@ -24,15 +25,15 @@ jobs:
       ssh_host: ${{ secrets.SSH_HOST }}
       ssh_user: ${{ secrets.SSH_USER }}
 
-  # manual-deploy-staging:
-  #   name: 'Deploy to Staging'
-  #   if: ${{ github.event.inputs.environment == 'staging' }}
-  #   uses: ./.github/workflows/deploy-app-workflow.yml
-  #   with:
-  #     environment: staging
-  #     branch: ${{ github.ref }}
-  #   secrets:
-  #     app_env: ${{ secrets.APP_ENV }}
-  #     ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-  #     ssh_host: ${{ secrets.SSH_HOST }}
-  #     ssh_user: ${{ secrets.SSH_USER }}
+  manual-deploy-staging:
+    name: 'Deploy to Staging'
+    if: ${{ github.event.inputs.environment == 'staging' }}
+    uses: ./.github/workflows/deploy-app-workflow.yml
+    with:
+      environment: staging
+      branch: ${{ github.ref }}
+    secrets:
+      app_env: ${{ secrets.APP_ENV }}
+      ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+      ssh_host: ${{ secrets.SSH_HOST }}
+      ssh_user: ${{ secrets.SSH_USER }}
