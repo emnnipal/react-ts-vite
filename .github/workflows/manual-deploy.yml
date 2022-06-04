@@ -1,0 +1,37 @@
+name: 'Manual deploy'
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy'
+        required: true
+        type: choice
+        default: 'dev'
+        options:
+          - dev
+          - staging
+
+jobs:
+  manual-deploy-dev:
+    if: ${{ github.event.inputs.environment }} == 'dev'
+    uses: ./.github/workflows/deploy-app-workflow.yml
+    with:
+      environment: DEV
+      branch: ${{ github.ref }}
+    secrets:
+      app_env: ${{ secrets.DEV_APP_ENV }}
+      ssh_private_key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
+      ssh_host: ${{ secrets.DEV_SSH_HOST }}
+      ssh_user: ${{ secrets.SSH_USER }}
+
+  manual-deploy-staging:
+    if: ${{ github.event.inputs.environment }} == 'staging'
+    uses: ./.github/workflows/deploy-app-workflow.yml
+    with:
+      environment: STAGING
+      branch: ${{ github.ref }}
+    secrets:
+      app_env: ${{ secrets.STAGING_APP_ENV }}
+      ssh_private_key: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+      ssh_host: ${{ secrets.STAGING_SSH_HOST }}
+      ssh_user: ${{ secrets.SSH_USER }}
