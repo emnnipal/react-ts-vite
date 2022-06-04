@@ -24,6 +24,7 @@ jobs:
       ssh_host: ${{ secrets.SSH_HOST }}
       ssh_user: ${{ secrets.SSH_USER }}
 
+  # This is useful for input based conditions workflow_dispatch jobs
   # manual-deploy-staging:
   #   name: 'Deploy to Staging'
   #   if: ${{ github.event.inputs.environment == 'staging' }}
