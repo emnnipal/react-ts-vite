@@ -50,12 +50,6 @@ jobs:
           node-version: 16.13.0
           cache: 'pnpm'
 
-      - name: Check ${{ inputs.environment }} env
-        run: |
-          [[ "${{ secrets.ssh_private_key }}" == "DEV" ]] && echo "env isDev"
-          [[ "${{ secrets.ssh_private_key }}" == "STAGING" ]] && echo "env isStaging"
-          echo "environment ${{ inputs.environment }}"
-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
 
@@ -67,6 +61,12 @@ jobs:
 
       - name: Deployment script below
         run: echo "add your script here to deploy ${{ inputs.branch }} branch"
+
+      - name: Check ${{ inputs.environment }} env
+        run: |
+          [[ "${{ secrets.ssh_host }}" == "DEV" ]] && echo "env isDev"
+          [[ "${{ secrets.ssh_host }}" == "STAGING" ]] && echo "env isStaging"
+          echo "environment ${{ inputs.environment }}"
 
       # to get the ref branch
       # take note that this is different from inputs.branch when executed from workflows with workflow_run
