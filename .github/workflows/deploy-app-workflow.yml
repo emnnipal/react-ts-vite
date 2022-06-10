@@ -54,7 +54,9 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
 
       - name: Set node environment variables
-        run: echo ${{ secrets.app_env }} | base64 --decode --ignore-garbage > .env
+        run: |
+          echo ${{ secrets.app_env }} | openssl base64 -d -A -out .env
+          cat .env
 
       - name: Build React App
         run: pnpm build
