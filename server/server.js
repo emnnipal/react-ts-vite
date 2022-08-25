@@ -50,7 +50,7 @@ app.use(
       if (path.match(/(\.html)$/)) {
         return;
       }
-      res.setHeader('Cache-Control', 'public, max-age=31536000');
+      res.setHeader('Cache-Control', 'max-age=31536000, immutable');
     },
   })
 );
