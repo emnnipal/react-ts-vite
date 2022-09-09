@@ -78,7 +78,7 @@
     "react-router-dom": "^6.3.0",
     "styled-components": "^5.3.5",
     "use-immer": "^0.7.0",
-    "yup": "^0.32.11",
+    "zod": "^3.19.0",
     "zustand": "4.0.0-rc.1"
   },
   "browserslist": {
