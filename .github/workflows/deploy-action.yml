@@ -8,7 +8,7 @@
 # 3. copy your Private Key and paste it into Github Secrets.
 #    cat github_actions/id_rsa_your_repo >> Github Secrets -> ssh_private_key
 
-name: 'Deploy React App Workflow'
+name: 'Deploy App Workflow'
 on:
   workflow_call:
     inputs:
@@ -29,7 +29,7 @@ on:
         required: true
 
 jobs:
-  deploy-react:
+  deploy-app:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     concurrency:

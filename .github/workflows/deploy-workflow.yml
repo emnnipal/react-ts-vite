@@ -39,7 +39,7 @@ jobs:
         run: pnpm test -- --changed ${{ github.ref }}
 
   deploy-to-dev:
-    name: Deploy React App to Dev
+    name: Deploy App to Dev
     if: github.event.ref == 'refs/heads/develop'
     needs: lint-and-test
     uses: ./.github/workflows/deploy-action.yml
@@ -88,7 +88,7 @@ jobs:
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
   deploy-to-staging:
-    name: Deploy React App to Staging
+    name: Deploy App to Staging
     if: needs.release.outputs.skipped == 'false'
     needs: release
     uses: ./.github/workflows/deploy-action.yml
