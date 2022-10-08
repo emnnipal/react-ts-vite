@@ -12,6 +12,10 @@ on:
         required: false
         type: string
         default: ''
+      isPreview:
+        required: false
+        type: boolean
+        default: false
     secrets:
       app_env:
         required: true
@@ -57,9 +61,6 @@ jobs:
       - name: Build React App
         run: pnpm build
 
-      - name: Deployment script below
-        run: echo "add your script here to deploy ${{ inputs.branch }} branch"
-
       - name: Deploy to Netlify (${{ github.ref_name }})
         uses: nwtgck/actions-netlify@v1.2
         with:
@@ -72,6 +73,7 @@ jobs:
           enable-commit-comment: false
           overwrites-pull-request-comment: false
           netlify-config-path: ./netlify.toml
+          github-deployment-environment: "${{ inputs.isPreview && 'pull request' || inputs.environment }}"
           alias: ${{ inputs.netlify_site_alias }}
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.netlify_pat }}
