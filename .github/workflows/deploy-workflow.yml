@@ -46,7 +46,7 @@ jobs:
     with:
       environment: dev
       branch: develop
-      netlify_site_alias: dev
+      netlify_site_alias: ${{ github.head_ref }}
     secrets:
       app_env: ${{ secrets.APP_ENV }}
       netlify_pat: ${{ secrets.NETLIFY_PAT }}
