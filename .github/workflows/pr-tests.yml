@@ -52,6 +52,7 @@ jobs:
         run: pnpm check:types
 
   pr-deploy-preview:
+    if: github.event.pull_request.base.ref == 'develop'
     needs: [pr-check-types, pr-lint-and-test]
     uses: ./.github/workflows/deploy-action.yml
     with:
