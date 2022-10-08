@@ -46,10 +46,11 @@ jobs:
     with:
       environment: dev
       branch: develop
+      netlify_site_alias: dev
     secrets:
       app_env: ${{ secrets.APP_ENV }}
-      netlify_pat:: ${{ secrets.NETLIFY_PAT }}
-      netlify_site_id:: ${{ secrets.NETLIFY_SITE_ID }}
+      netlify_pat: ${{ secrets.NETLIFY_PAT }}
+      netlify_site_id: ${{ secrets.NETLIFY_SITE_ID }}
 
   release:
     name: Release
@@ -96,5 +97,5 @@ jobs:
       branch: 'refs/tags/${{needs.release.outputs.tag}}'
     secrets:
       app_env: ${{ secrets.APP_ENV }}
-      netlify_pat:: ${{ secrets.NETLIFY_PAT }}
-      netlify_site_id:: ${{ secrets.NETLIFY_SITE_ID }}
+      netlify_pat: ${{ secrets.NETLIFY_PAT }}
+      netlify_site_id: ${{ secrets.NETLIFY_SITE_ID }}
