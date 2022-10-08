@@ -50,3 +50,16 @@ jobs:
 
       - name: Check Types
         run: pnpm check:types
+
+  deploy-to-production:
+    name: Deploy App to Production
+    needs: [pr-check-types, pr-lint-and-test]
+    uses: ./.github/workflows/deploy-action.yml
+    with:
+      environment: dev
+      branch: ${{ github.ref }}
+      netlify_site_alias: preview-${{ github.event.number }}
+    secrets:
+      app_env: ${{ secrets.APP_ENV }}
+      netlify_pat:: ${{ secrets.NETLIFY_PAT }}
+      netlify_site_id:: ${{ secrets.NETLIFY_SITE_ID }}
