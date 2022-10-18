@@ -100,7 +100,7 @@ jobs:
       # take note that this is different from inputs.branch when executed from workflows with workflow_run
       # - name: Get the current branch name
       #   shell: bash
-      #   run: echo "::set-output name=branch::${GITHUB_REF#refs/heads/}"
+      #   run: echo "BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
       #   id: extract_branch
 
       # - name: Install SSH Key
