@@ -3,8 +3,8 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "mikestead.dotenv",
-    // "bradlc.vscode-tailwindcss",
-    "ecmel.vscode-html-css",
-    "styled-components.vscode-styled-components"
+    "bradlc.vscode-tailwindcss",
+    "ecmel.vscode-html-css"
+    // "styled-components.vscode-styled-components"
   ]
 }
