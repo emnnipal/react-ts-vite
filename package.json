@@ -82,7 +82,6 @@
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
     "react-router-dom": "^6.4.2",
-    "styled-components": "^5.3.6",
     "use-immer": "^0.7.0",
     "zod": "^3.19.1",
     "zustand": "4.1.2"
@@ -98,8 +97,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "resolutions": {
-    "styled-components": "^5"
   }
 }
