@@ -2,8 +2,6 @@
 
 ## Boilerplate for ReactJS with Vite and TypeScript
 
-#
-
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a89e22eb-e6a4-4b89-9b28-5145b491f3fc/deploy-status)](https://app.netlify.com/sites/react-ts-vite/deploys)
 [![Deploy](https://github.com/emnnipal/react-ts-vite/actions/workflows/deploy-workflow.yml/badge.svg?branch=main)](https://github.com/emnnipal/react-ts-vite/actions/workflows/deploy-workflow.yml)
 
