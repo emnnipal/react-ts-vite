@@ -23,37 +23,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
 
-      - name: Run ESLint
-        run: pnpm lint
+      - name: Run lint and type checks
+        run: pnpm lint & pnpm check:types & wait
 
       - name: Run tests
         run: pnpm test
 
-  pr-check-types:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.ref }}
-
-      - uses: pnpm/action-setup@v2.0.1
-        with:
-          version: 7.0.1
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16.13.0
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile --ignore-scripts
-
-      - name: Check Types
-        run: pnpm check:types
-
   pr-deploy-preview:
     if: github.event.pull_request.base.ref == 'develop'
-    needs: [pr-check-types, pr-lint-and-test]
+    needs: [pr-lint-and-test]
     uses: ./.github/workflows/deploy-action.yml
     with:
       environment: dev
