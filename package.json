@@ -1,6 +1,6 @@
 {
   "name": "react-ts-vite",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Boilerplate react js with typescript and vite",
   "private": true,
   "author": "Emmanuel Nipal <emnnipal@gmail.com>",
