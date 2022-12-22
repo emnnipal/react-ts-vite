@@ -21,6 +21,7 @@ specifiers:
   autoprefixer: ^10.4.13
   axios: ^1.2.1
   classnames: ^2.3.2
+  concurrently: ^7.6.0
   cross-env: ^7.0.3
   dayjs: ^1.11.7
   dotenv: ^16.0.3
@@ -89,6 +90,7 @@ devDependencies:
   '@vitest/coverage-c8': 0.25.6_uymjjldjntybiznriydrftj6ie
   '@vitest/ui': 0.25.6
   autoprefixer: 10.4.13_postcss@8.4.19
+  concurrently: 7.6.0
   cross-env: 7.0.3
   dotenv: 16.0.3
   eslint: 8.29.0
@@ -106,7 +108,7 @@ devDependencies:
   prettier: 2.8.1
   prettier-plugin-tailwindcss: 0.2.1_prettier@2.8.1
   sass: 1.56.2
-  tailwindcss: 3.2.4
+  tailwindcss: 3.2.4_postcss@8.4.19
   typescript: 4.9.4
   vite: 4.0.0_73lfsi4xmmmu3zhcuv45qpgb6a
   vite-plugin-compression: 0.5.1_vite@4.0.0
@@ -2658,6 +2660,25 @@ packages:
     resolution: { integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s= }
     dev: true
 
+  /concurrently/7.6.0:
+    resolution:
+      {
+        integrity: sha512-BKtRgvcJGeZ4XttiDiNcFiRlxoAeZOseqUvyYRUp/Vtd+9p1ULmeoSqGsDA+2ivdeDFpqrJvGvmI+StKfKl5hw==,
+      }
+    engines: { node: ^12.20.0 || ^14.13.0 || >=16.0.0 }
+    hasBin: true
+    dependencies:
+      chalk: 4.1.2
+      date-fns: 2.29.3
+      lodash: 4.17.21
+      rxjs: 7.6.0
+      shell-quote: 1.7.4
+      spawn-command: 0.0.2-1
+      supports-color: 8.1.1
+      tree-kill: 1.2.2
+      yargs: 17.6.2
+    dev: true
+
   /confusing-browser-globals/1.0.11:
     resolution:
       {
@@ -2853,6 +2874,14 @@ packages:
       abab: 2.0.6
       whatwg-mimetype: 3.0.0
       whatwg-url: 11.0.0
+    dev: true
+
+  /date-fns/2.29.3:
+    resolution:
+      {
+        integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==,
+      }
+    engines: { node: '>=0.11' }
     dev: true
 
   /dayjs/1.11.7:
@@ -6758,6 +6787,13 @@ packages:
     engines: { node: '>=8' }
     dev: true
 
+  /shell-quote/1.7.4:
+    resolution:
+      {
+        integrity: sha512-8o/QEhSSRb1a5i7TFR0iM4G16Z0vYB2OQVs4G3aAFXjn3T6yEx8AZxy1PgDF7I00LZHYA3WxaSYIf5e5sAX8Rw==,
+      }
+    dev: true
+
   /side-channel/1.0.4:
     resolution:
       {
@@ -6846,6 +6882,13 @@ packages:
       }
     engines: { node: '>=0.10.0' }
     requiresBuild: true
+    dev: true
+
+  /spawn-command/0.0.2-1:
+    resolution:
+      {
+        integrity: sha512-n98l9E2RMSJ9ON1AKisHzz7V42VDiBQGY6PB1BwRglz99wpVsSuGzQ+jOi6lFXBGVTCrRpltvjm+/XA+tpeJrg==,
+      }
     dev: true
 
   /spdx-correct/3.1.1:
@@ -7071,6 +7114,16 @@ packages:
       has-flag: 4.0.0
     dev: true
 
+  /supports-color/8.1.1:
+    resolution:
+      {
+        integrity: sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q==,
+      }
+    engines: { node: '>=10' }
+    dependencies:
+      has-flag: 4.0.0
+    dev: true
+
   /supports-preserve-symlinks-flag/1.0.0:
     resolution:
       {
@@ -7093,13 +7146,15 @@ packages:
       }
     dev: true
 
-  /tailwindcss/3.2.4:
+  /tailwindcss/3.2.4_postcss@8.4.19:
     resolution:
       {
         integrity: sha512-AhwtHCKMtR71JgeYDaswmZXhPcW9iuI9Sp2LvZPo9upDZ7231ZJ7eA9RaURbhpXGVlrjX4cFNlB4ieTetEb7hQ==,
       }
     engines: { node: '>=12.13.0' }
     hasBin: true
+    peerDependencies:
+      postcss: ^8.0.9
     dependencies:
       arg: 5.0.2
       chokidar: 3.5.3
@@ -7241,6 +7296,14 @@ packages:
     engines: { node: '>=12' }
     dependencies:
       punycode: 2.1.1
+    dev: true
+
+  /tree-kill/1.2.2:
+    resolution:
+      {
+        integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==,
+      }
+    hasBin: true
     dev: true
 
   /trim-newlines/3.0.1:
