@@ -13,3 +13,4 @@ logs/
 
 # misc
 .eslintcache
+pnpm-lock.yaml
