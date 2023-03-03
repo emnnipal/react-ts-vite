@@ -1,0 +1,14 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": ["pnpm", "commitlint", "tailwindcss", "svgr", "zustand", "Avenir"],
+  "flagWords": [],
+  "ignorePaths": [
+    "node_modules/",
+    "build/",
+    "coverage/",
+    ".husky",
+    "pnpm-lock.yaml",
+    "package.json"
+  ]
+}
