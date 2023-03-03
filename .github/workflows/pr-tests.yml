@@ -30,7 +30,7 @@ jobs:
           "pnpm check:types" \
           "pnpm test" \
           "pnpm prettier --check --ignore-unknown ./" \
-          "npx cspell ./ --no-progress --no-must-find-files"
+          "pnpm cspell ./ --no-progress --no-must-find-files"
 
   pr-deploy-preview:
     if: github.event.pull_request.base.ref == 'develop'
